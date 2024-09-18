@@ -1,0 +1,133 @@
+<html>
+<head>
+    <link rel="stylesheet" href="mpox.css">
+    <title>Mpox Model Inference</title>
+</head>
+<body>
+    <div id="disclaimerSection" style="display:block">
+        <h1>
+            Please see the disclaimer before proceeding
+        </h1>
+        <button id="openDisclaimerBtn">Open Disclaimer</button>
+
+        <!-- The Modal -->
+        <div id="disclaimerModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                  <span class="close">&times;</span>
+                  <h2>Disclaimer</h2>
+                </div>
+                <div class="modal-body">
+                <p>Welcome to our Mpox Detection Tool. 
+                    Please be advised that this tool is 
+                    intended for research purposes only and 
+                    is not a substitute for professional medical advice, 
+                    diagnosis, or treatment. The images and survey data 
+                    you provide will be collected anonymously and used solely 
+                    for the purpose of improving our understanding and detection 
+                    of mpox. By continuing, you consent to the collection and use 
+                    of your data in accordance with these terms. Please 
+                    consult a healthcare professional for any medical concerns.</p>
+                </div>
+                <div class="modal-footer">
+                <h3>Thank you, <br>
+                    Jonathan Gong</h3>
+                <h4>
+                    <button id="agreeBtn">Agree</button>
+                </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div id="hiddenstuff" style="display:none">  -->
+      <div id="surveySection" style="display:none">
+        <h1>
+            Welcome to the Mpox Detector
+        </h1>
+          <h1>Mpox Survey</h1>
+          <p>Please fill out the following survey to help us understand your symptoms and potential exposure to mpox.</p>
+              <form id="surveyForm" enctype="multipart/form-data">
+              <div class="form-group">
+                  <label for="symptom_onset">When did your symptoms start?</label>
+                  <input type="date"id="symptom_onset" name="symptom_onset" required>
+              </div>
+              <div class="form-group">
+                  <label for="symptoms">List your symptoms:</label>
+                  <textarea id="symptoms" name="symptoms" rows="3" required></textarea>
+              </div>
+              <div class="form-group">
+                  <label for="travel_history">Have you traveled recently? If yes, where?</label>
+                  <input type="text" id="travel_history" name="travel_history" required>
+              </div>
+              <div class="form-group">
+                  <label for="contact_history">Have you had contact with a known mpox case?</label>
+                  <input type="text" id="contact_history" name="contact_history" required>
+              </div>
+              <div class="form-group">
+                <label for="medical_image">Input your PNG image for diagnosis</label>
+                <input type="file", accept="image/png" id="medical_image" name="medical_image" required>
+              </div>
+              <button type="submit", id = "surveybtn", class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+        <!-- Button to Run Model -->
+        <h1>Results</h1>
+        <button type="submit" id="modelrunbtn">Run Model</button>
+      </div>
+      <div id="loadingContainer" style="display:none;">
+        <div id="loadingBar" style="width: 0%; height: 20px; background-color: blue;"></div>
+        <p id="loadingText">Loading model: 0%</p>
+      </div>
+    <div>
+        <script src="survey_loader.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <!-- <script src="extra_layers.js"></script> -->
+        <script src="model_loader.js"></script>
+        <div id="result"></div>
+        <!-- <script src="model_run.js"></script> -->
+            <!-- <-- Model Upload Section -->
+        <!-- <input type="file" id="modelUpload" multiple onchange="loadUploadedModel()" />
+        <br><br> -->
+
+        <!-- Inference Section -->
+        <!-- <input id="dataInput" type="file" placeholder="Enter data">
+        <button onclick="getPrediction()">Predict</button>
+        <p id="result">Result: </p>
+
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+        <script>
+            let model;
+
+            async function loadUploadedModel() {
+                const uploadedFiles = document.getElementById('modelUpload').files;
+                if (uploadedFiles.length > 0) {
+                    // Assuming the first file is the model.json file
+                    const modelJson = await uploadedFiles[0].text();
+                    
+                    // Load the model using tfjs
+                    model = await tf.loadLayersModel(tf.io.browserFiles([uploadedFiles[0], ...Array.from(uploadedFiles).slice(1)]));
+                    alert("Model loaded successfully!");
+                }
+            }
+
+            async function getPrediction() {
+                if (!model) {
+                    alert("Please upload a model first.");
+                    return;
+                }
+
+                let dataInput = parseFloat(document.getElementById("dataInput").value);
+                const inputData = tf.tensor([dataInput]);
+                const prediction = model.predict(inputData);
+                
+                document.getElementById("result").innerText = "Result: " + prediction.dataSync()[0];
+            }
+        </script>
+
+        <font size = +100>!!! NOT READY YET !!! PAGE UNDER PROGRESS!!!</font> -->
+        
+    </div>
+</body>
+</html>
