@@ -19,7 +19,7 @@ $contact_history = $_POST['contact_history'];
 // Handle file upload
 $target_dir = "uploads/";
 $target_file = $target_dir . basename($_FILES["medical_image"]["name"]);
-echo $target_file;
+// echo $target_file;
 
 if (move_uploaded_file($_FILES["medical_image"]["tmp_name"], $target_file)) {
     // File uploaded successfully

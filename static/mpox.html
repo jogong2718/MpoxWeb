@@ -41,7 +41,7 @@
         </div>
     </div>
     <!-- <div id="hiddenstuff" style="display:none">  -->
-      <div id="surveySection" style="display:none">
+    <div id="surveySection" style="display:none">
         <h1>
             Welcome to the Mpox Detector
         </h1>
@@ -70,12 +70,14 @@
               </div>
               <button type="submit", id = "surveybtn", class="btn btn-primary">Submit</button>
             </form>
+    </div>
+        <div id="surveyresult"></div>
+        <button type="submit" id="tomodelbtn" style="display: none;">Go To Model</button>
+        <div id="modelSection" style="display:none">
+            <!-- Button to Run Model -->
+            <h1>Results</h1>
+            <button type="submit" id="modelrunbtn">Run Model</button>
         </div>
-
-        <!-- Button to Run Model -->
-        <h1>Results</h1>
-        <button type="submit" id="modelrunbtn">Run Model</button>
-      </div>
       <div id="loadingContainer" style="display:none;">
         <div id="loadingBar" style="width: 0%; height: 20px; background-color: blue;"></div>
         <p id="loadingText">Loading model: 0%</p>

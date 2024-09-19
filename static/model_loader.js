@@ -32,7 +32,7 @@ async function loadModel() {
     showLoadingBar();
 
     try {
-        model = await tf.loadLayersModel('justcnn/model.json' 
+        model = await tf.loadLayersModel('model/model.json' 
             // {
             //     customObjects: { Patches: Patches,
             //                     PatchEncoder: PatchEncoder,
@@ -55,7 +55,7 @@ async function loadModel() {
         // Hide the loading container after a short delay to simulate completion
         setTimeout(() => {
             loadingContainer.style.display = 'none';
-        }, 500);
+        }, 10);
     } catch (error) {
         console.error("Error loading the model:", error);
         alert("Error loading the model. Please try again.");
@@ -89,12 +89,17 @@ async function runInference(imageElement) {
         updateInferenceBar(progress);
 
         // Stop updating progress bar when it reaches 100%
-        if (progress >= 100) {
+        if (progress >= 90) {
             clearInterval(inferenceInterval);
         }
     }, 100);
 
     const prediction = await model.predict(inputTensor).data();
+
+    loadingBar.style.width = '100%';  // Finish loading bar
+    loadingText.innerText = `Finished Inference: 100%`;
+    document.getElementById('modelSection').style.display = 'none';
+    loadingContainer.style.display = 'none'
     classes = ['MonkeyPox', 'Cowpox', 'Healthy', 'HFMD', 'Measles', 'Chickenpox']
     let resultText = '';  // Initialize an empty string for the result
 
