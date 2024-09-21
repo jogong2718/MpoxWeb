@@ -101,15 +101,46 @@ async function runInference(imageElement) {
     document.getElementById('modelSection').style.display = 'none';
     loadingContainer.style.display = 'none'
     classes = ['MonkeyPox', 'Cowpox', 'Healthy', 'HFMD', 'Measles', 'Chickenpox']
-    let resultText = '';  // Initialize an empty string for the result
 
-    for (let i = 0; i < prediction.length; i++) {
-        resultText += `Class ${classes[i]}: ${prediction[i]}\n`;  // Append each prediction with a newline
+
+    // Display the result to the user
+
+    const predictions = [prediction[0]*100, prediction[1]*100, prediction[2]*100, prediction[3]*100, prediction[4]*100, prediction[5]*100];
+    const labels = ['MonkeyPox', 'Cowpox', 'Healthy', 'HFMD', 'Measles', 'Chickenpox'];
+
+    function renderBarChart() {
+        const ctx = document.getElementById('predictionChart').getContext('2d');
+        const predictionChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,  // Labels for each bar
+                datasets: [{
+                    label: 'Prediction Confidence',
+                    data: predictions,  // Prediction values
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        type: 'logarithmic',  // Set Y-axis to logarithmic
+                        min: 0.1,           // Set minimum to a small positive number
+                        max: 100,               // Maximum value is 1
+                        ticks: {
+                            callback: function(value) {
+                                return value.toFixed(0) + '%';  // Format the ticks as numbers
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
-    // Display the result
-    document.getElementById('result').innerText = "Prediction:\n" + resultText;
-        // Display the result to the user
+    // Call this function when you want to display the chart
+    renderBarChart();
     
 }
 
