@@ -86,6 +86,7 @@ To run the project locally, follow these steps:
     - Set up a local server using **XAMPP**, **MAMP**, or similar tools. Ensure **PHP** and **MySQL** are properly installed and running.
     - Place the project files in the `htdocs` (XAMPP) or equivalent directory for your server setup.
     - Alternatively, since this is a lightweight project, you can use PHP's built-in web server by running:
+   
    ```bash
     php -S localhost:8000
    ```
