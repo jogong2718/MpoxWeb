@@ -117,22 +117,49 @@ async function runInference(imageElement) {
                 datasets: [{
                     label: 'Prediction Confidence',
                     data: predictions,  // Prediction values
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    backgroundColor: 'rgba(54, 162, 235, 0.7)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
                 }]
             },
             options: {
                 scales: {
+                    x: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 1)'  // Set X-axis grid lines to white
+                        },
+                        ticks: {
+                            color: 'white'  // Set X-axis tick labels to white
+                        }
+                    },
                     y: {
+                        grid: {
+                            color: 'rgba(255, 255, 255, 1)'  // Set X-axis grid lines to white
+                        },
+                        ticks: {
+                            color: 'white'  // Set X-axis tick labels to white
+                        },
                         type: 'logarithmic',  // Set Y-axis to logarithmic
                         min: 0.1,           // Set minimum to a small positive number
                         max: 100,               // Maximum value is 1
                         ticks: {
+                            color: 'white',
                             callback: function(value) {
                                 return value.toFixed(0) + '%';  // Format the ticks as numbers
                             }
                         }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: 'white'  // Set legend text to white
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Model Predictions',
+                        color: 'white'  // Set chart title to white
                     }
                 }
             }
@@ -141,7 +168,7 @@ async function runInference(imageElement) {
 
     // Call this function when you want to display the chart
     renderBarChart();
-    
+    document.getElementById('result').style.display = 'block';
 }
 
 // Convert image to tensor and resize it to match the model's input shape

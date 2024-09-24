@@ -18,8 +18,9 @@ document.getElementById('tomodelbtn').addEventListener('click', function() {
     document.getElementById('surveySection').style.display = 'none';
     document.getElementById('surveyresult').style.display = 'none';
     document.getElementById('modelSection').style.display = 'block';
-    
+    document.getElementById('surveysuccess').style.display = 'none';
 });
+
 
 document.getElementById('surveyForm').addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent default form submission
@@ -36,7 +37,10 @@ document.getElementById('surveyForm').addEventListener('submit', async function(
         // Display the server response (optional)
         // alert("Survey submitted successfully: " + data);
         // You can also display the response in a div or other element on the page
-        document.getElementById('surveyresult').innerHTML = data;
+        if (data == "Survey submitted successfully!") {
+            document.getElementById('surveysuccess').style.display = 'block';
+        }
+        document.getElementById('surveySection').style.display = 'none';
         document.getElementById('tomodelbtn').style.display = 'block';
     })
     .catch(error => {
