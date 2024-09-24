@@ -9,6 +9,7 @@ document.querySelector('.modal .close').addEventListener('click', function() {
 document.getElementById('agreeBtn').addEventListener('click', function() {
     document.getElementById('disclaimerSection').style.display = 'none';
     document.getElementById('surveySection').style.display = 'block';
+    document.getElementById('homepage').style.display = 'none';
 });
 
 document.getElementById('tomodelbtn').addEventListener('click', function() {
