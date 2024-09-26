@@ -19,7 +19,7 @@ Welcome to the **Mpox Detector Website**. This project aims to provide a researc
 
 This project provides a machine learning-based solution for diagnosing Mpox using images and survey responses. The main goal is to develop a tool that aids in the early detection of Mpox while contributing to research efforts.
 
-The website is hosted using TBD and features a user-friendly interface built with **Bootstrap**.
+The website is hosted using Azure and features a user-friendly interface built with **Bootstrap**.
 
 ## Features
 
@@ -47,8 +47,7 @@ The website is hosted using TBD and features a user-friendly interface built wit
 
 You can visit the live site at:
 
-<!-- [Mpox Detector Website](http://yourwebsite.com) -->
-TBD
+monkeypox-h0h3a7dqcreaerd4.canadacentral-01.azurewebsites.net/static/index.html
 
 ### Running the Model
 
@@ -108,7 +107,7 @@ This project uses the following technologies:
 - **TensorFlow.js** for client-side model inference
 - **PHP & MySQL** for backend storage
 - **Chart.js** for displaying prediction results
-- TBD for web hosting
+- **Microsoft** Azure for web hosting
 
 ## Contributing
 
