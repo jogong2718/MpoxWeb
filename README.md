@@ -47,7 +47,7 @@ The website is hosted using Azure and features a user-friendly interface built w
 
 You can visit the live site at:
 
-[MpoxWeb](monkeypox-h0h3a7dqcreaerd4.canadacentral-01.azurewebsites.net/static/index.html)
+[MpoxWeb](https://monkeypox-h0h3a7dqcreaerd4.canadacentral-01.azurewebsites.net/static/index.html)
 
 ### Running the Model
 
